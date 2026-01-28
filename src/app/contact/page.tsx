@@ -3,44 +3,30 @@ import ContactForm from '@/components/ContactForm';
 
 export default function ContactPage() {
     return (
-        <div className="container" style={{ padding: '4rem 1rem' }}>
-            <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-                <h1 style={{ fontSize: '2.5rem', fontWeight: 700, marginBottom: '1rem' }}>Contact Us</h1>
-                <p style={{ color: 'var(--muted-foreground)', maxWidth: '600px', margin: '0 auto' }}>
+        <div className="container py-16">
+            <div className="mx-auto mb-16 max-w-2xl text-center">
+                <h1 className="mb-4 text-4xl font-bold tracking-tight text-foreground">Contact Us</h1>
+                <p className="text-lg text-muted-foreground">
                     Have questions about our products or need a custom quote? We're here to help.
                 </p>
             </div>
 
-            <div className="contact-layout">
-                <style>{`
-            .contact-layout {
-                display: grid;
-                grid-template-columns: 1fr;
-                gap: 4rem;
-            }
-            @media (min-width: 768px) {
-                .contact-layout {
-                    grid-template-columns: 1fr 1fr;
-                    gap: 6rem;
-                }
-            }
-        `}</style>
-
+            <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-24">
                 {/* Contact Info */}
-                <div>
-                    <div style={{ marginBottom: '3rem' }}>
-                        <h3 style={{ fontSize: '1.25rem', fontWeight: 600, marginBottom: '1rem' }}>Get in Touch</h3>
-                        <p style={{ color: 'var(--muted-foreground)', marginBottom: '0.5rem' }}>
-                            Email: <a href="mailto:hello@lumina.com" style={{ color: 'var(--primary)' }}>hello@lumina.com</a>
+                <div className="space-y-12">
+                    <div>
+                        <h3 className="mb-4 text-xl font-semibold text-foreground">Get in Touch</h3>
+                        <p className="mb-2 text-muted-foreground">
+                            Email: <a href="mailto:hello@lumina.com" className="font-medium text-primary hover:underline">hello@lumina.com</a>
                         </p>
-                        <p style={{ color: 'var(--muted-foreground)' }}>
+                        <p className="text-muted-foreground">
                             Phone: +1 (555) 123-4567
                         </p>
                     </div>
 
-                    <div style={{ marginBottom: '3rem' }}>
-                        <h3 style={{ fontSize: '1.25rem', fontWeight: 600, marginBottom: '1rem' }}>Office</h3>
-                        <p style={{ color: 'var(--muted-foreground)', lineHeight: 1.6 }}>
+                    <div>
+                        <h3 className="mb-4 text-xl font-semibold text-foreground">Office</h3>
+                        <p className="text-muted-foreground leading-relaxed">
                             123 Business Avenue<br />
                             Suite 400<br />
                             New York, NY 10001<br />
@@ -49,8 +35,8 @@ export default function ContactPage() {
                     </div>
 
                     <div>
-                        <h3 style={{ fontSize: '1.25rem', fontWeight: 600, marginBottom: '1rem' }}>Hours</h3>
-                        <p style={{ color: 'var(--muted-foreground)' }}>
+                        <h3 className="mb-4 text-xl font-semibold text-foreground">Hours</h3>
+                        <p className="text-muted-foreground">
                             Monday - Friday: 9am - 6pm EST
                         </p>
                     </div>

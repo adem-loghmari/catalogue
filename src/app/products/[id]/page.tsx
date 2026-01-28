@@ -17,102 +17,61 @@ export default async function ProductPage({ params }: Props) {
     }
 
     return (
-        <div className="container" style={{ padding: '4rem 1rem' }}>
-            <div style={{ marginBottom: '2rem' }}>
-                <Link href="/catalog" style={{ color: 'var(--muted-foreground)', fontSize: '0.875rem', textDecoration: 'underline' }}>
+        <div className="container py-16">
+            <div className="mb-8">
+                <Link href="/catalog" className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
                     &larr; Back to Catalog
                 </Link>
             </div>
 
-            <div className="product-layout">
-                {/* Style block for grid layout */}
-                <style>{`
-          .product-layout {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 3rem;
-          }
-          @media (min-width: 768px) {
-            .product-layout {
-              grid-template-columns: 1fr 1fr;
-            }
-          }
-        `}</style>
-
+            <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
                 {/* Product Image */}
-                <div style={{
-                    backgroundColor: 'var(--secondary)',
-                    borderRadius: '0.5rem',
-                    height: '400px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    color: 'var(--muted-foreground)',
-                    fontSize: '4rem'
-                }}>
+                <div className="flex items-center justify-center rounded-2xl bg-secondary/5 h-[400px] sm:h-[500px] text-6xl text-muted-foreground border border-border">
                     {product.image ? (
-                        <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: '#f1f5f9', borderRadius: '0.5rem' }}>
+                        <div className="flex h-full w-full items-center justify-center rounded-2xl">
                             📷
                         </div>
                     ) : 'Image'}
                 </div>
 
                 {/* Product Details */}
-                <div>
-                    <div style={{ marginBottom: '1.5rem' }}>
-                        <span style={{
-                            color: 'var(--primary)',
-                            fontWeight: 600,
-                            fontSize: '0.875rem',
-                            textTransform: 'uppercase',
-                            letterSpacing: '0.05em'
-                        }}>
+                <div className="flex flex-col">
+                    <div className="mb-2">
+                        <span className="inline-block rounded-full bg-secondary/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary">
                             {product.category}
                         </span>
-                        <h1 style={{ fontSize: '2.5rem', fontWeight: 700, margin: '0.5rem 0 1rem' }}>{product.name}</h1>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
-                            <span style={{ fontSize: '1.5rem', fontWeight: 600 }}>${product.price.toFixed(2)}</span>
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '0.25rem', color: '#fbbf24' }}>
-                                <span>★</span>
-                                <span style={{ color: 'var(--foreground)', fontWeight: 500 }}>{product.rating}</span>
-                                <span style={{ color: 'var(--muted-foreground)', fontSize: '0.875rem' }}>({product.reviews} reviews)</span>
-                            </div>
-                        </div>
-                        <p style={{ color: 'var(--muted-foreground)', lineHeight: 1.6, marginBottom: '2rem' }}>
-                            {product.fullDescription}
-                        </p>
+                    </div>
 
-                        <button style={{
-                            backgroundColor: 'var(--primary)',
-                            color: 'var(--primary-foreground)',
-                            padding: '1rem 2rem',
-                            borderRadius: '0.375rem',
-                            fontSize: '1rem',
-                            fontWeight: 600,
-                            width: '100%',
-                            transition: 'opacity 0.2s'
-                        }}
-                        // Simple interaction via CSS or inline handlers
-                        >
+                    <h1 className="mb-4 text-4xl font-extrabold tracking-tight text-foreground">{product.name}</h1>
+
+                    <div className="mb-6 flex items-center gap-4">
+                        <span className="text-3xl font-bold text-foreground">${product.price.toFixed(2)}</span>
+                        <div className="flex items-center gap-1 text-amber-400">
+                            <span>★</span>
+                            <span className="font-medium text-foreground">{product.rating}</span>
+                            <span className="text-sm text-muted-foreground">({product.reviews} reviews)</span>
+                        </div>
+                    </div>
+
+                    <p className="mb-8 text-lg leading-relaxed text-muted-foreground">
+                        {product.fullDescription}
+                    </p>
+
+                    <div className="mb-10">
+                        <button className="w-full rounded-md bg-primary px-8 py-4 text-lg font-semibold text-primary-foreground shadow-lg transition-transform hover:bg-primary/90 hover:-translate-y-0.5 sm:w-auto">
                             Add to Cart
                         </button>
                     </div>
 
-                    <hr style={{ border: 'none', borderTop: '1px solid var(--border)', margin: '2rem 0' }} />
+                    <hr className="border-border" />
 
                     <ProductSpecs specs={product.specs} />
 
-                    <div style={{ marginTop: '2rem' }}>
-                        <h4 style={{ fontWeight: 600, marginBottom: '0.5rem' }}>Tags:</h4>
-                        <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+                    <div className="mt-8">
+                        <h4 className="mb-3 text-sm font-semibold text-foreground">Tags:</h4>
+                        <div className="flex flex-wrap gap-2">
                             {product.tags.map(tag => (
-                                <span key={tag} style={{
-                                    backgroundColor: 'var(--secondary)',
-                                    color: 'var(--secondary-foreground)',
-                                    padding: '0.25rem 0.75rem',
-                                    borderRadius: '999px',
-                                    fontSize: '0.75rem'
-                                }}>
+                                <span key={tag} className="inline-flex items-center rounded-full bg-secondary/10 px-3 py-1 text-xs font-medium text-secondary-foreground">
                                     #{tag}
                                 </span>
                             ))}

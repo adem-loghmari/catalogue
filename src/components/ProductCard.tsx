@@ -10,101 +10,40 @@ interface ProductCardProps {
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     return (
-        <div style={{
-            border: '1px solid var(--border)',
-            borderRadius: '0.5rem',
-            overflow: 'hidden',
-            backgroundColor: 'white',
-            transition: 'box-shadow 0.2s, transform 0.2s',
-            display: 'flex',
-            flexDirection: 'column',
-            height: '100%'
-        }}
-            onMouseEnter={(e) => {
-                e.currentTarget.style.boxShadow = '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)';
-                e.currentTarget.style.transform = 'translateY(-4px)';
-            }}
-            onMouseLeave={(e) => {
-                e.currentTarget.style.boxShadow = 'none';
-                e.currentTarget.style.transform = 'translateY(0)';
-            }}
-        >
+        <div className="group flex h-full flex-col overflow-hidden rounded-xl border border-border bg-surface shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md">
             {/* Image Placeholder */}
-            <Link href={`/products/${product.id}`}>
-                <div style={{
-                    height: '240px',
-                    backgroundColor: 'var(--secondary)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    color: 'var(--muted-foreground)',
-                    position: 'relative'
-                }}>
+            <Link href={`/products/${product.id}`} className="block">
+                <div className="relative flex h-60 items-center justify-center bg-secondary/5 text-muted-foreground">
                     {product.image ? (
-                        <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: '#f1f5f9' }}>
-                            {/* In a real app we'd use Next.js Image, but strictly placeholder for now as per rules or user context */}
-                            <span style={{ fontSize: '3rem' }}>📷</span>
+                        <div className="flex h-full w-full items-center justify-center bg-slate-100 text-4xl">
+                            📷
                         </div>
                     ) : 'Product Image'}
 
                     {(product.isNew || product.isBestSeller) && (
-                        <div style={{
-                            position: 'absolute',
-                            top: '10px',
-                            left: '10px',
-                            backgroundColor: product.isBestSeller ? 'var(--primary)' : '#22c55e',
-                            color: 'white',
-                            padding: '0.25rem 0.5rem',
-                            borderRadius: '0.25rem',
-                            fontSize: '0.75rem',
-                            fontWeight: 600,
-                            textTransform: 'uppercase'
-                        }}>
+                        <div className={`absolute left-3 top-3 rounded px-2 py-1 text-xs font-semibold uppercase text-white ${product.isBestSeller ? 'bg-primary' : 'bg-green-500'}`}>
                             {product.isBestSeller ? 'Best Seller' : 'New'}
                         </div>
                     )}
                 </div>
             </Link>
 
-            <div style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
-                <p style={{
-                    fontSize: '0.75rem',
-                    color: 'var(--muted-foreground)',
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.05em',
-                    marginBottom: '0.5rem'
-                }}>
+            <div className="flex flex-1 flex-col p-6">
+                <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
                     {product.category}
                 </p>
-                <Link href={`/products/${product.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
-                    <h3 style={{
-                        fontWeight: 600,
-                        fontSize: '1.125rem',
-                        marginBottom: '0.5rem',
-                        lineHeight: 1.4
-                    }}>
+                <Link href={`/products/${product.id}`}>
+                    <h3 className="mb-2 text-lg font-semibold leading-snug text-foreground group-hover:text-primary transition-colors">
                         {product.name}
                     </h3>
                 </Link>
-                <p style={{
-                    color: 'var(--muted-foreground)',
-                    fontSize: '0.875rem',
-                    marginBottom: '1rem',
-                    lineHeight: 1.5,
-                    flexGrow: 1
-                }}>
+                <p className="mb-4 flex-1 text-sm leading-relaxed text-muted-foreground">
                     {product.description}
                 </p>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 'auto' }}>
-                    <p style={{ fontWeight: 600, fontSize: '1.125rem' }}>${product.price.toFixed(2)}</p>
+                <div className="mt-auto flex items-center justify-between">
+                    <p className="text-lg font-semibold text-foreground">${product.price.toFixed(2)}</p>
                     <Link href={`/products/${product.id}`}>
-                        <button style={{
-                            fontSize: '0.875rem',
-                            fontWeight: 500,
-                            color: 'var(--primary)',
-                            textDecoration: 'underline',
-                            textUnderlineOffset: '4px'
-                        }}>
+                        <button className="text-sm font-medium text-primary decoration-2 underline-offset-4 hover:underline">
                             Details
                         </button>
                     </Link>

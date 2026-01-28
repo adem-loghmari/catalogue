@@ -5,70 +5,22 @@ import React from 'react';
 
 const Hero = () => {
     return (
-        <section style={{
-            padding: '8rem 0',
-            backgroundColor: 'var(--accent)',
-            textAlign: 'center',
-            borderBottom: '1px solid var(--border)'
-        }}>
-            <div className="container" style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                gap: '2rem'
-            }}>
-                <h1 style={{
-                    fontSize: '3.5rem',
-                    fontWeight: 800,
-                    lineHeight: 1.1,
-                    letterSpacing: '-0.02em',
-                    maxWidth: '800px',
-                    color: 'var(--primary)'
-                }}>
+        <section className="bg-background py-32 text-center border-b border-border">
+            <div className="container flex flex-col items-center gap-8">
+                <h1 className="max-w-4xl text-5xl font-extrabold tracking-tight text-primary sm:text-6xl lg:text-7xl">
                     Simplicity is the ultimate sophistication.
                 </h1>
-                <p style={{
-                    fontSize: '1.25rem',
-                    color: 'var(--muted-foreground)',
-                    maxWidth: '600px',
-                    lineHeight: 1.6
-                }}>
+                <p className="max-w-2xl text-xl text-muted-foreground leading-relaxed">
                     Discover our curated collection of premium office essentials designed for the modern professional.
                 </p>
-                <div style={{
-                    display: 'flex',
-                    gap: '1rem',
-                    marginTop: '1rem'
-                }}>
+                <div className="mt-4 flex gap-4">
                     <Link href="/catalog">
-                        <button style={{
-                            backgroundColor: 'var(--primary)',
-                            color: 'var(--primary-foreground)',
-                            padding: '0.75rem 2rem',
-                            borderRadius: '0.375rem',
-                            fontSize: '1rem',
-                            fontWeight: 600,
-                            boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
-                            transition: 'transform 0.2s',
-                        }}
-                            onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-2px)'}
-                            onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}>
+                        <button className="rounded-md bg-primary px-8 py-3 text-base font-semibold text-primary-foreground shadow-md transition-all hover:bg-primary/90 hover:-translate-y-0.5">
                             Browse Catalog
                         </button>
                     </Link>
                     <Link href="/contact">
-                        <button style={{
-                            backgroundColor: 'var(--background)',
-                            color: 'var(--foreground)',
-                            border: '1px solid var(--border)',
-                            padding: '0.75rem 2rem',
-                            borderRadius: '0.375rem',
-                            fontSize: '1rem',
-                            fontWeight: 600,
-                            transition: 'background-color 0.2s'
-                        }}
-                            onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--secondary)'}
-                            onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--background)'}>
+                        <button className="rounded-md border border-border bg-background px-8 py-3 text-base font-semibold text-foreground transition-colors hover:bg-secondary/10">
                             Contact Sales
                         </button>
                     </Link>

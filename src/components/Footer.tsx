@@ -5,31 +5,13 @@ import React from 'react';
 
 const Footer = () => {
     return (
-        <footer style={{
-            borderTop: '1px solid var(--border)',
-            backgroundColor: 'var(--accent)',
-            padding: '4rem 0 2rem 0',
-            marginTop: 'auto'
-        }}>
+        <footer className="mt-auto border-t border-border bg-background py-16">
             <div className="container">
-                <div style={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-                    gap: '2rem',
-                    marginBottom: '4rem'
-                }}>
+                <div className="grid grid-cols-1 gap-8 md:grid-cols-4 mb-16">
                     {/* Brand Column */}
-                    <div>
-                        <h3 style={{
-                            fontWeight: 'bold',
-                            fontSize: '1.25rem',
-                            marginBottom: '1rem'
-                        }}>LUMINA</h3>
-                        <p style={{
-                            color: 'var(--muted-foreground)',
-                            fontSize: '0.875rem',
-                            lineHeight: 1.6
-                        }}>
+                    <div className="space-y-4">
+                        <h3 className="text-xl font-bold text-foreground">LUMINA</h3>
+                        <p className="text-sm text-muted-foreground leading-relaxed">
                             Premium products for professionals. <br />
                             Quality, design, and innovation.
                         </p>
@@ -37,75 +19,48 @@ const Footer = () => {
 
                     {/* Links Column */}
                     <div>
-                        <h4 style={{
-                            fontWeight: 600,
-                            marginBottom: '1rem',
-                            fontSize: '0.875rem'
-                        }}>Company</h4>
-                        <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                            <li><Link href="/" style={{ color: 'var(--muted-foreground)', fontSize: '0.875rem' }}>About Us</Link></li>
-                            <li><Link href="/contact" style={{ color: 'var(--muted-foreground)', fontSize: '0.875rem' }}>Careers</Link></li>
-                            <li><Link href="/contact" style={{ color: 'var(--muted-foreground)', fontSize: '0.875rem' }}>Contact</Link></li>
+                        <h4 className="mb-4 text-sm font-semibold text-foreground">Company</h4>
+                        <ul className="space-y-2">
+                            <li><Link href="/" className="text-sm text-muted-foreground hover:text-foreground transition-colors">About Us</Link></li>
+                            <li><Link href="/contact" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Careers</Link></li>
+                            <li><Link href="/contact" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Contact</Link></li>
                         </ul>
                     </div>
 
                     {/* Links Column */}
                     <div>
-                        <h4 style={{
-                            fontWeight: 600,
-                            marginBottom: '1rem',
-                            fontSize: '0.875rem'
-                        }}>Catalog</h4>
-                        <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                            <li><Link href="/catalog" style={{ color: 'var(--muted-foreground)', fontSize: '0.875rem' }}>New Arrivals</Link></li>
-                            <li><Link href="/catalog" style={{ color: 'var(--muted-foreground)', fontSize: '0.875rem' }}>Best Sellers</Link></li>
-                            <li><Link href="/catalog" style={{ color: 'var(--muted-foreground)', fontSize: '0.875rem' }}>Discounts</Link></li>
+                        <h4 className="mb-4 text-sm font-semibold text-foreground">Catalog</h4>
+                        <ul className="space-y-2">
+                            <li><Link href="/catalog" className="text-sm text-muted-foreground hover:text-foreground transition-colors">New Arrivals</Link></li>
+                            <li><Link href="/catalog" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Best Sellers</Link></li>
+                            <li><Link href="/catalog" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Discounts</Link></li>
                         </ul>
                     </div>
 
                     {/* Newsletter Column */}
                     <div>
-                        <h4 style={{
-                            fontWeight: 600,
-                            marginBottom: '1rem',
-                            fontSize: '0.875rem'
-                        }}>Subscribe</h4>
-                        <p style={{ color: 'var(--muted-foreground)', fontSize: '0.875rem', marginBottom: '1rem' }}>
+                        <h4 className="mb-4 text-sm font-semibold text-foreground">Subscribe</h4>
+                        <p className="mb-4 text-sm text-muted-foreground">
                             Latest news and updates.
                         </p>
-                        <div style={{ display: 'flex', gap: '0.5rem' }}>
-                            <input type="email" placeholder="Enter your email" style={{
-                                padding: '0.5rem',
-                                borderRadius: '0.375rem',
-                                border: '1px solid var(--border)',
-                                width: '100%',
-                                fontSize: '0.875rem'
-                            }} />
-                            <button style={{
-                                backgroundColor: 'var(--primary)',
-                                color: 'var(--primary-foreground)',
-                                padding: '0.5rem 1rem',
-                                borderRadius: '0.375rem',
-                                fontSize: '0.875rem',
-                                fontWeight: 500
-                            }}>Join</button>
+                        <div className="flex gap-2">
+                            <input
+                                type="email"
+                                placeholder="Enter your email"
+                                className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
+                            />
+                            <button className="rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90 transition-colors">
+                                Join
+                            </button>
                         </div>
                     </div>
                 </div>
 
-                <div style={{
-                    borderTop: '1px solid var(--border)',
-                    paddingTop: '2rem',
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                    color: 'var(--muted-foreground)',
-                    fontSize: '0.75rem'
-                }}>
+                <div className="flex flex-col items-center justify-between gap-4 border-t border-border pt-8 text-xs text-muted-foreground sm:flex-row">
                     <p>&copy; {new Date().getFullYear()} Lumina Inc. All rights reserved.</p>
-                    <div style={{ display: 'flex', gap: '1rem' }}>
-                        <Link href="#">Privacy Policy</Link>
-                        <Link href="#">Terms of Service</Link>
+                    <div className="flex gap-4">
+                        <Link href="#" className="hover:text-foreground transition-colors">Privacy Policy</Link>
+                        <Link href="#" className="hover:text-foreground transition-colors">Terms of Service</Link>
                     </div>
                 </div>
             </div>

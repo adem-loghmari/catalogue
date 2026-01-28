@@ -13,7 +13,6 @@ const ContactForm = () => {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        // Simulate submission
         setTimeout(() => setSubmitted(true), 500);
     };
 
@@ -23,19 +22,12 @@ const ContactForm = () => {
 
     if (submitted) {
         return (
-            <div style={{
-                backgroundColor: '#f0fdf4', // green-50
-                border: '1px solid #bbf7d0', // green-200
-                color: '#166534', // green-800
-                padding: '2rem',
-                borderRadius: '0.5rem',
-                textAlign: 'center'
-            }}>
-                <h3 style={{ fontSize: '1.25rem', fontWeight: 600, marginBottom: '0.5rem' }}>Message Sent!</h3>
+            <div className="rounded-lg border border-green-200 bg-green-50 p-8 text-center text-green-800">
+                <h3 className="mb-2 text-xl font-semibold">Message Sent!</h3>
                 <p>Thank you for reaching out. We'll get back to you shortly.</p>
                 <button
                     onClick={() => { setSubmitted(false); setFormData({ name: '', email: '', subject: '', message: '' }); }}
-                    style={{ marginTop: '1rem', textDecoration: 'underline', fontWeight: 500 }}
+                    className="mt-4 font-medium text-green-700 underline underline-offset-4 hover:text-green-900"
                 >
                     Send another message
                 </button>
@@ -44,9 +36,9 @@ const ContactForm = () => {
     }
 
     return (
-        <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+        <form onSubmit={handleSubmit} className="flex flex-col gap-6 rounded-xl border border-border bg-surface p-8 shadow-sm">
             <div>
-                <label htmlFor="name" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 500 }}>Name</label>
+                <label htmlFor="name" className="mb-2 block text-sm font-medium text-foreground">Name</label>
                 <input
                     type="text"
                     id="name"
@@ -54,18 +46,12 @@ const ContactForm = () => {
                     required
                     value={formData.name}
                     onChange={handleChange}
-                    style={{
-                        width: '100%',
-                        padding: '0.75rem',
-                        border: '1px solid var(--border)',
-                        borderRadius: '0.375rem',
-                        fontFamily: 'inherit'
-                    }}
+                    className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
                 />
             </div>
 
             <div>
-                <label htmlFor="email" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 500 }}>Email</label>
+                <label htmlFor="email" className="mb-2 block text-sm font-medium text-foreground">Email</label>
                 <input
                     type="email"
                     id="email"
@@ -73,18 +59,12 @@ const ContactForm = () => {
                     required
                     value={formData.email}
                     onChange={handleChange}
-                    style={{
-                        width: '100%',
-                        padding: '0.75rem',
-                        border: '1px solid var(--border)',
-                        borderRadius: '0.375rem',
-                        fontFamily: 'inherit'
-                    }}
+                    className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
                 />
             </div>
 
             <div>
-                <label htmlFor="subject" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 500 }}>Subject</label>
+                <label htmlFor="subject" className="mb-2 block text-sm font-medium text-foreground">Subject</label>
                 <input
                     type="text"
                     id="subject"
@@ -92,18 +72,12 @@ const ContactForm = () => {
                     required
                     value={formData.subject}
                     onChange={handleChange}
-                    style={{
-                        width: '100%',
-                        padding: '0.75rem',
-                        border: '1px solid var(--border)',
-                        borderRadius: '0.375rem',
-                        fontFamily: 'inherit'
-                    }}
+                    className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
                 />
             </div>
 
             <div>
-                <label htmlFor="message" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 500 }}>Message</label>
+                <label htmlFor="message" className="mb-2 block text-sm font-medium text-foreground">Message</label>
                 <textarea
                     id="message"
                     name="message"
@@ -111,29 +85,13 @@ const ContactForm = () => {
                     rows={5}
                     value={formData.message}
                     onChange={handleChange}
-                    style={{
-                        width: '100%',
-                        padding: '0.75rem',
-                        border: '1px solid var(--border)',
-                        borderRadius: '0.375rem',
-                        fontFamily: 'inherit',
-                        resize: 'vertical'
-                    }}
+                    className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary resize-y"
                 />
             </div>
 
             <button
                 type="submit"
-                style={{
-                    backgroundColor: 'var(--primary)',
-                    color: 'var(--primary-foreground)',
-                    padding: '0.75rem 2rem',
-                    borderRadius: '0.375rem',
-                    fontSize: '1rem',
-                    fontWeight: 600,
-                    cursor: 'pointer',
-                    alignSelf: 'start'
-                }}
+                className="mt-2 w-full rounded-md bg-primary px-8 py-3 text-base font-semibold text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:w-auto"
             >
                 Send Message
             </button>

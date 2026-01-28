@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 
 export type SortOption = 'newest' | 'price-low' | 'price-high' | 'popularity';
@@ -9,34 +11,26 @@ interface SortSelectProps {
 
 const SortSelect: React.FC<SortSelectProps> = ({ value, onChange }) => {
     return (
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <label htmlFor="sort" style={{ fontSize: '0.875rem', color: 'var(--muted-foreground)' }}>Sort by:</label>
-            <select
-                id="sort"
-                value={value}
-                onChange={(e) => onChange(e.target.value as SortOption)}
-                style={{
-                    padding: '0.6rem 2rem 0.6rem 1rem',
-                    borderRadius: '0.375rem',
-                    border: '1px solid var(--border)',
-                    backgroundColor: 'var(--background)',
-                    color: 'var(--foreground)',
-                    fontSize: '0.875rem',
-                    cursor: 'pointer',
-                    fontFamily: 'inherit',
-                    backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2364748b'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E")`,
-                    backgroundRepeat: 'no-repeat',
-                    backgroundPosition: 'right 0.5rem center',
-                    backgroundSize: '1rem',
-                    appearance: 'none',
-                    minWidth: '200px'
-                }}
-            >
-                <option value="newest">Newest Arrivals</option>
-                <option value="popularity">Popularity</option>
-                <option value="price-low">Price: Low to High</option>
-                <option value="price-high">Price: High to Low</option>
-            </select>
+        <div className="flex items-center gap-3">
+            <label htmlFor="sort" className="whitespace-nowrap text-sm text-muted-foreground">Sort by:</label>
+            <div className="relative">
+                <select
+                    id="sort"
+                    value={value}
+                    onChange={(e) => onChange(e.target.value as SortOption)}
+                    className="appearance-none rounded-md border border-border bg-surface py-2 pl-4 pr-10 text-sm font-medium text-foreground shadow-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary cursor-pointer min-w-[180px]"
+                >
+                    <option value="newest">Newest Arrivals</option>
+                    <option value="popularity">Popularity</option>
+                    <option value="price-low">Price: Low to High</option>
+                    <option value="price-high">Price: High to Low</option>
+                </select>
+                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-muted-foreground">
+                    <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </div>
+            </div>
         </div>
     );
 };

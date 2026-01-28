@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 
 interface ProductSpecsProps {
@@ -6,18 +8,20 @@ interface ProductSpecsProps {
 
 const ProductSpecs: React.FC<ProductSpecsProps> = ({ specs }) => {
     return (
-        <div style={{ marginTop: '2rem' }}>
-            <h3 style={{ fontSize: '1.25rem', fontWeight: 600, marginBottom: '1rem' }}>Specifications</h3>
-            <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.875rem' }}>
-                <tbody>
-                    {Object.entries(specs).map(([key, value]) => (
-                        <tr key={key} style={{ borderBottom: '1px solid var(--border)' }}>
-                            <td style={{ padding: '0.75rem 0', color: 'var(--muted-foreground)', width: '40%' }}>{key}</td>
-                            <td style={{ padding: '0.75rem 0', fontWeight: 500 }}>{value}</td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
+        <div className="mt-8">
+            <h3 className="mb-4 text-xl font-semibold text-foreground">Specifications</h3>
+            <div className="overflow-hidden rounded-lg border border-border">
+                <table className="w-full text-sm text-left">
+                    <tbody className="divide-y divide-border bg-surface">
+                        {Object.entries(specs).map(([key, value]) => (
+                            <tr key={key} className="hover:bg-muted/5 transition-colors">
+                                <td className="w-1/3 px-6 py-4 font-medium text-muted-foreground bg-muted/5">{key}</td>
+                                <td className="px-6 py-4 text-foreground font-medium">{value}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
         </div>
     );
 };

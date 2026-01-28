@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { Category } from '@/lib/products';
 
@@ -19,33 +21,18 @@ const FilterSidebar: React.FC<FilterSidebarProps> = ({
     maxPrice
 }) => {
     return (
-        <aside style={{ width: '100%' }}>
+        <aside className="w-full">
             {/* Categories */}
-            {/* Categories */}
-            <div style={{ marginBottom: '2rem' }}>
-                <h3 style={{ fontSize: '1.125rem', fontWeight: 600, marginBottom: '1rem' }}>Categories</h3>
-                <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
+            <div className="mb-8">
+                <h3 className="mb-4 text-lg font-semibold text-foreground">Categories</h3>
+                <ul className="space-y-1">
                     <li>
                         <button
                             onClick={() => onSelectCategory('All')}
-                            style={{
-                                textAlign: 'left',
-                                color: selectedCategory === 'All' ? 'var(--foreground)' : 'var(--muted-foreground)',
-                                fontWeight: selectedCategory === 'All' ? 600 : 500,
-                                width: '100%',
-                                padding: '0.5rem 0.75rem',
-                                borderRadius: '0.375rem',
-                                backgroundColor: selectedCategory === 'All' ? 'var(--secondary)' : 'transparent',
-                                transition: 'all 0.2s'
-                            }}
-                            onMouseEnter={(e) => {
-                                if (selectedCategory !== 'All') e.currentTarget.style.backgroundColor = 'var(--accent)';
-                                e.currentTarget.style.color = 'var(--foreground)';
-                            }}
-                            onMouseLeave={(e) => {
-                                if (selectedCategory !== 'All') e.currentTarget.style.backgroundColor = 'transparent';
-                                if (selectedCategory !== 'All') e.currentTarget.style.color = 'var(--muted-foreground)';
-                            }}
+                            className={`w-full rounded-md px-3 py-2 text-left text-sm font-medium transition-colors ${selectedCategory === 'All'
+                                    ? 'bg-secondary/10 text-primary'
+                                    : 'text-muted-foreground hover:bg-muted/10 hover:text-foreground'
+                                }`}
                         >
                             All Products
                         </button>
@@ -54,24 +41,10 @@ const FilterSidebar: React.FC<FilterSidebarProps> = ({
                         <li key={cat}>
                             <button
                                 onClick={() => onSelectCategory(cat)}
-                                style={{
-                                    textAlign: 'left',
-                                    color: selectedCategory === cat ? 'var(--foreground)' : 'var(--muted-foreground)',
-                                    fontWeight: selectedCategory === cat ? 600 : 500,
-                                    width: '100%',
-                                    padding: '0.5rem 0.75rem',
-                                    borderRadius: '0.375rem',
-                                    backgroundColor: selectedCategory === cat ? 'var(--secondary)' : 'transparent',
-                                    transition: 'all 0.2s'
-                                }}
-                                onMouseEnter={(e) => {
-                                    if (selectedCategory !== cat) e.currentTarget.style.backgroundColor = 'var(--accent)';
-                                    e.currentTarget.style.color = 'var(--foreground)';
-                                }}
-                                onMouseLeave={(e) => {
-                                    if (selectedCategory !== cat) e.currentTarget.style.backgroundColor = 'transparent';
-                                    if (selectedCategory !== cat) e.currentTarget.style.color = 'var(--muted-foreground)';
-                                }}
+                                className={`w-full rounded-md px-3 py-2 text-left text-sm font-medium transition-colors ${selectedCategory === cat
+                                        ? 'bg-secondary/10 text-primary'
+                                        : 'text-muted-foreground hover:bg-muted/10 hover:text-foreground'
+                                    }`}
                             >
                                 {cat}
                             </button>
@@ -82,18 +55,18 @@ const FilterSidebar: React.FC<FilterSidebarProps> = ({
 
             {/* Price Filter */}
             <div>
-                <h3 style={{ fontSize: '1.125rem', fontWeight: 600, marginBottom: '1rem' }}>Price Range</h3>
-                <div style={{ marginBottom: '1rem' }}>
+                <h3 className="mb-4 text-lg font-semibold text-foreground">Price Range</h3>
+                <div className="mb-4">
                     <input
                         type="range"
                         min="0"
                         max={maxPrice}
                         value={priceRange[1]}
                         onChange={(e) => onPriceChange([0, Number(e.target.value)])}
-                        style={{ width: '100%', cursor: 'pointer' }}
+                        className="h-2 w-full cursor-pointer appearance-none rounded-lg bg-secondary/20 accent-primary focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
                     />
                 </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.875rem' }}>
+                <div className="flex justify-between text-sm text-muted-foreground">
                     <span>$0</span>
                     <span>Up to ${priceRange[1]}</span>
                 </div>
