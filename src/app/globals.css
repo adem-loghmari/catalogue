@@ -1,0 +1,78 @@
+:root {
+  /* Color Palette */
+  --background: #ffffff;
+  --foreground: #171717;
+
+  --primary: #0f172a;
+  /* Slate 900 */
+  --primary-foreground: #f8fafc;
+  /* Slate 50 */
+
+  --secondary: #e2e8f0;
+  /* Slate 200 */
+  --secondary-foreground: #0f172a;
+
+  --accent: #f1f5f9;
+  /* Slate 100 */
+  --accent-foreground: #0f172a;
+
+  --muted: #64748b;
+  /* Slate 500 */
+  --muted-foreground: #94a3b8;
+
+  --border: #e2e8f0;
+
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  font-family: var(--font-sans);
+  background-color: var(--background);
+  color: var(--foreground);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  /* Increased from 1rem */
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding: 0 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding: 0 4rem;
+    /* More breathing room on desktop */
+  }
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}
